@@ -12,7 +12,6 @@ app.$mount()
 
 // #ifdef VUE3
 import { createSSRApp } from 'vue'
-import 'static/iconfont/iconfont.css'
 export function createApp() {
   const app = createSSRApp(App)
   return {

@@ -12,6 +12,14 @@
 	}
 </script>
 
-<style>
-	
+<style lang="scss">
+	/* 页面公共的css */
+	.container{
+		width: 100%;
+		height: calc(100vh - 95px);
+		overflow: hidden;
+		scroll-view{
+				height: calc(100vh - 95px);
+			}
+	}
 </style>

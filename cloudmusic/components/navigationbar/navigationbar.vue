@@ -1,15 +1,16 @@
 <template>
 	<view class="music-head">
-		<view class="music-head-icon-content">
-			<svg class="icon music-head-ico" >
-			  <use xlink:href="#icon-fanhui"></use>
-			</svg>
-			<text>|</text>	
-			<svg class="icon music-head-ico" >
-			  <use xlink:href="#icon-shouye"></use>
-			</svg>
+		<view v-if="isshowIcon" class="music-head-icon-content">
+				<text 
+				class="iconfont icon-fanhui" 
+				@click="handleBack"></text>
+							|
+				<text 
+				class="iconfont icon-shouye" 
+				@click="handleHome"></text>
+			
 		</view>
-		<view class="">
+		<view>
 			{{title}}
 			<slot></slot>
 		</view>
@@ -17,14 +18,27 @@
 </template>
 
 <script>
+	import iconfont from "@/static/iconfont/iconfont.css"
 	export default {
 		name:"navigationbar",
+		components:{
+			name:'iconfont'
+		},
 		data() {
 			return {
-				
+				isshowIcon:this.showIcon
 			};
 		},
-		props:['title']
+		props:['title','showIcon'],
+		methods:{
+			handleBack(){
+				uni.navigateBack()
+				console.log(this.showIcon,this.isshowIcon);
+			},
+			handleHome(){
+				url: '/pages/index/index.vue'
+			}
+		}
 	}
 </script>
 
