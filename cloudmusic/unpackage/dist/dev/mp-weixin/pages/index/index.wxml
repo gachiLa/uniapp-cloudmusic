@@ -1,0 +1,1 @@
+<view class="content">myapp<label class="iconfont icon-fenxiang _span"></label><svg class="icon" vue-id="8dd740cc-1" aria-hidden="true" bind:__l="__l" vue-slots="{{['default']}}"><use vue-id="{{('8dd740cc-2')+','+('8dd740cc-1')}}" xlink:href="#icon-aixin" bind:__l="__l"></use></svg></view>
