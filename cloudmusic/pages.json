@@ -3,7 +3,8 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "uni-app"
+				"navigationBarTitleText": "网易云音乐",
+				"navigationStyle":"custom"
 			}
 		}
 	],

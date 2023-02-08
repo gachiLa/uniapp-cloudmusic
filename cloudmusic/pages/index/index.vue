@@ -1,18 +1,22 @@
 <template>
 	<view class="content">
-		myapp
+		<navigationbar :title="title">
+			<svg class="icon" aria-hidden="true">
+			  <use xlink:href="#icon-aixin"></use>
+			</svg>
+		</navigationbar>
 		<span class="iconfont icon-fenxiang"></span> 
-		<svg class="icon" aria-hidden="true">
-		  <use xlink:href="#icon-aixin"></use>
-		</svg>
+		
 	</view>
 </template>
 
 <script>
 	import '@/static/iconfont/iconfont.js'
+	import navbar from "@/components/navigationbar/navigationbar.vue"
 	export default {
 		data() {
 			return {
+				title:'网易云音乐'
 			}
 		},
 		onLoad() {
@@ -26,11 +30,11 @@
 
 <style>
 	.icon {
-	  width: 1em;
-	  height: 1em;
-	  vertical-align: -0.15em;
+	  width: 1em !important;
+	  height: 1em !important;
+	  vertical-align: -0.15em !important;
 	  fill: currentColor;
-	  overflow: hidden;
+	  overflow: hidden !important;
 	}
 	.content {
 		display: flex;

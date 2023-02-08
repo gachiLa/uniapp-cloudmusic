@@ -1,4 +1,7 @@
 {
-  "navigationBarTitleText": "uni-app",
-  "usingComponents": {}
+  "navigationBarTitleText": "网易云音乐",
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "navigationbar": "/components/navigationbar/navigationbar"
+  }
 }
