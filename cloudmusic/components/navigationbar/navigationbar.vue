@@ -1,6 +1,6 @@
 <template>
 	<view class="music-head">
-		<view v-if="isshowIcon" class="music-head-icon-content">
+		<view v-if="showIcon" class="music-head-icon-content">
 				<text 
 				class="iconfont icon-fanhui" 
 				@click="handleBack"></text>
@@ -21,22 +21,28 @@
 	import iconfont from "@/static/iconfont/iconfont.css"
 	export default {
 		name:"navigationbar",
-		components:{
-			name:'iconfont'
-		},
 		data() {
 			return {
-				isshowIcon:this.showIcon
 			};
 		},
 		props:['title','showIcon'],
 		methods:{
 			handleBack(){
 				uni.navigateBack()
-				console.log(this.showIcon,this.isshowIcon);
 			},
 			handleHome(){
-				url: '/pages/index/index.vue'
+				uni.navigateTo({
+					//不加后缀.vue 
+					url: '/pages/index/index',
+					success: res => {
+						console.log(res,'111');
+					},
+					fail: (e) => {
+						console.log(e,222);
+					},
+					complete: () => {}
+				});
+				
 			}
 		}
 	}

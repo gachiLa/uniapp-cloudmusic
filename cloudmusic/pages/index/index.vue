@@ -1,6 +1,6 @@
 <template>
 	<view class="content">
-		<navigationbar :title="title" showIcon="false">
+		<navigationbar :title="title" :showIcon="false">
 		</navigationbar>
 		<view class="container">
 			<scroll-view scroll-y="true">
@@ -10,22 +10,22 @@
 					<input type="text" placeholder="serch">
 				</view>
 				<view class="index-list">
-					<view class="index-list-item">
+					<view class="index-list-item" v-for="(item,index) in topList" :key="index" @click="tapToList(item.id)">
 						<view class="index-list-img">
-							<image src="../../static/logo.png">
+							<image :src="item.coverImgUrl">
 							</image>
-							<text>new song</text>
+							<text>{{item.updateFrequency}}</text>
 						</view>
 						<view class="index-list-text">
-							<view class="">
+							<view v-for="(track,trackIndex) in item.tracks" :key="trackIndex">
+								{{trackIndex +1}}. {{track.first}}-{{track.second}}
+							</view>
+							<!-- <view class="">
 								1.no thing
 							</view>
 							<view class="">
 								1.no thing
-							</view>
-							<view class="">
-								1.no thing
-							</view>
+							</view> -->
 						</view>
 					</view>
 				</view>
@@ -38,17 +38,31 @@
 
 <script>
 	import navigationbar from "@/components/navigationbar/navigationbar.vue"
+	import {topList} from "@/common/api.js"
 	export default {
 		data() {
 			return {
-				title:'网易云音乐'
+				title:'网易云音乐',
+				topList:[],
 			}
 		},
 		onLoad() {
-
+			topList().then(res => {
+				if(res.length){
+					this.topList = res
+					console.log(res);
+				}
+			})
 		},
-		methods: {
-
+		methods:{
+			tapToList(id){
+				uni.navigateTo({
+					url: '/pages/list/list?listId='+id,
+					// success: res => {},
+					// fail: () => {},
+					// complete: () => {}
+				});	
+			}
 		}
 	}
 </script>
@@ -98,6 +112,11 @@
 		.index-list-text{
 			font-size: 24rpx;
 			line-height: 66rpx;
+			width: 400rpx;
+			height: 212rpx;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			word-break: break-all;
 		}
 	}
 	.content {
